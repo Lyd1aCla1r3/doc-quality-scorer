@@ -7,12 +7,13 @@ def _analyze_metrics(structure: dict, readability: dict, fidelity: dict) -> dict
     fk = readability.get("flesch_kincaid", 0)
     flagged = readability.get("flagged_sentences", [])
     if fk < 50:
-        msg = "Score is penalized due to overly complex sentence structures. Action: Consider simplifying the following flagged sentences:"
+        msg = "Score is penalized due to overly complex sentence structures.\n\n**Action:** Simplify the following flagged sentences:"
         if flagged:
-            msg += "\n" + "\n".join([f"  - '{s}'" for s in flagged])
+            for s in flagged:
+                msg += f"\n> \"{s}\"\n"
         analysis["readability_analysis"] = msg
     elif fk > 80:
-        analysis["readability_analysis"] = "Score indicates extremely simple text. Action: Ensure necessary technical depth and precision are not sacrificed."
+        analysis["readability_analysis"] = "Score indicates extremely simple text.\n\n**Action:** Ensure necessary technical depth and precision are not sacrificed."
     else:
         analysis["readability_analysis"] = "Readability is within the optimal range (60-80) for technical documentation."
         
@@ -20,9 +21,9 @@ def _analyze_metrics(structure: dict, readability: dict, fidelity: dict) -> dict
     cons = fidelity.get("consistency_score", 0)
     drifting = fidelity.get("drifting_terms", [])
     if cons < 0.10:
-        msg = "Score is heavily penalized due to high semantic drift. Action: Unify your terminology. The following terms are used inconsistently across different sections:"
+        msg = "Score is heavily penalized due to high semantic drift.\n\n**Action:** Unify your terminology. The following terms are used inconsistently across different sections:\n"
         if drifting:
-            msg += "\n  - " + ", ".join([f"'{t}'" for t in drifting])
+            msg += "\n> `" + "`, `".join(drifting) + "`\n"
         analysis["fidelity_analysis"] = msg
     else:
         analysis["fidelity_analysis"] = "High semantic consistency. Terminology remains cohesive and focused across sections."

@@ -58,7 +58,14 @@ def calculate_readability(text: str) -> dict:
             sentence_scores.append((s_fk, s))
             
     sentence_scores.sort(key=lambda x: x[0])
-    flagged_sentences = [s[1] for s in sentence_scores if s[0] < 40][:3]
+    
+    flagged_sentences = []
+    for score, s in sentence_scores:
+        if score < 40 and len(flagged_sentences) < 3:
+            # Clean up markdown hashes and collapse newlines for cleaner output
+            clean_s = re.sub(r'#+\s*', '', s).strip()
+            clean_s = ' '.join(clean_s.split())
+            flagged_sentences.append(clean_s)
     
     return {
         "flesch_kincaid": fk_score,

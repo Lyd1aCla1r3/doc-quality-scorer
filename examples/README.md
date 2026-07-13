@@ -86,20 +86,25 @@ Evaluating: subtle_degradation_guide.md
 - Flesch-Kincaid Reading Ease: 29.77
 - Word Count: 134
 
-**Analysis**: Score is penalized due to overly complex sentence structures. Action: Consider simplifying the following flagged sentences:
-  - 'The virtual server typically necessitates approximately five minutes for complete initialization.'
-  - '## Prerequisites
+**Analysis**: Score is penalized due to overly complex sentence structures.
 
-Prior to the initiation of the creation process for an EC2 instance, the verification of appropriate administrative authorizations is fundamentally required.'
-  - '## Next Steps
+**Action:** Simplify the following flagged sentences:
+> "The virtual server typically necessitates approximately five minutes for complete initialization."
 
-Following the successful startup phase of the allocated hardware, the monitoring of its operational integrity can be achieved via the administrative dashboard.'
+> "Prerequisites Prior to the initiation of the creation process for an EC2 instance, the verification of appropriate administrative authorizations is fundamentally required."
+
+> "Next Steps Following the successful startup phase of the allocated hardware, the monitoring of its operational integrity can be achieved via the administrative dashboard."
+
 
 ### Fidelity & Consistency
 - Semantic Consistency: 0.0539
 
-**Analysis**: Score is heavily penalized due to high semantic drift. Action: Unify your terminology. The following terms are used inconsistently across different sections:
-  - 'provisioning', 'machine', 'select', 'virtual', 'workloads'
+**Analysis**: Score is heavily penalized due to high semantic drift.
+
+**Action:** Unify your terminology. The following terms are used inconsistently across different sections:
+
+> `provisioning`, `machine`, `select`, `virtual`, `workloads`
+
 
 
 ======================================================
