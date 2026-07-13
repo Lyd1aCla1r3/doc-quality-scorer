@@ -34,7 +34,7 @@ def calculate_readability(text: str) -> dict:
     ensure_nltk_resources()
     sentences = sent_tokenize(text)
     if not sentences:
-        return {"flesch_kincaid": 0.0, "word_count": 0, "sentence_count": 0}
+        return {"flesch_kincaid": 0.0, "word_count": 0, "sentence_count": 0, "flagged_sentences": []}
 
     words = [w for w in word_tokenize(text) if re.search(r'\w', w)]
     word_count = len(words)
@@ -42,13 +42,27 @@ def calculate_readability(text: str) -> dict:
     syllable_count = sum(count_syllables(w) for w in words)
 
     if word_count == 0 or sentence_count == 0:
-        return {"flesch_kincaid": 0.0, "word_count": 0, "sentence_count": 0}
+        return {"flesch_kincaid": 0.0, "word_count": 0, "sentence_count": 0, "flagged_sentences": []}
 
     # Flesch-Kincaid Reading Ease
     fk_score = 206.835 - 1.015 * (word_count / sentence_count) - 84.6 * (syllable_count / word_count)
     
+    # Flag lowest scoring sentences
+    sentence_scores = []
+    for s in sentences:
+        s_words = [w for w in word_tokenize(s) if re.search(r'\w', w)]
+        s_wc = len(s_words)
+        if s_wc > 3:
+            s_syl = sum(count_syllables(w) for w in s_words)
+            s_fk = 206.835 - 1.015 * (s_wc / 1) - 84.6 * (s_syl / s_wc)
+            sentence_scores.append((s_fk, s))
+            
+    sentence_scores.sort(key=lambda x: x[0])
+    flagged_sentences = [s[1] for s in sentence_scores if s[0] < 40][:3]
+    
     return {
         "flesch_kincaid": fk_score,
         "word_count": word_count,
-        "sentence_count": sentence_count
+        "sentence_count": sentence_count,
+        "flagged_sentences": flagged_sentences
     }

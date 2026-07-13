@@ -54,12 +54,18 @@ Evaluating: cohesive_guide.md
 - Paragraphs: 3
 - Code Blocks: 0
 
+**Analysis**: Document is properly partitioned with structural elements.
+
 ### Readability
 - Flesch-Kincaid Reading Ease: 61.64
 - Word Count: 116
 
+**Analysis**: Readability is within the optimal range (60-80) for technical documentation.
+
 ### Fidelity & Consistency
 - Semantic Consistency: 0.1805
+
+**Analysis**: High semantic consistency. Terminology remains cohesive and focused across sections.
 
 
 Evaluating: subtle_degradation_guide.md
@@ -74,12 +80,26 @@ Evaluating: subtle_degradation_guide.md
 - Paragraphs: 3
 - Code Blocks: 0
 
+**Analysis**: Document is properly partitioned with structural elements.
+
 ### Readability
 - Flesch-Kincaid Reading Ease: 29.77
 - Word Count: 134
 
+**Analysis**: Score is penalized due to overly complex sentence structures. Action: Consider simplifying the following flagged sentences:
+  - 'The virtual server typically necessitates approximately five minutes for complete initialization.'
+  - '## Prerequisites
+
+Prior to the initiation of the creation process for an EC2 instance, the verification of appropriate administrative authorizations is fundamentally required.'
+  - '## Next Steps
+
+Following the successful startup phase of the allocated hardware, the monitoring of its operational integrity can be achieved via the administrative dashboard.'
+
 ### Fidelity & Consistency
 - Semantic Consistency: 0.0539
+
+**Analysis**: Score is heavily penalized due to high semantic drift. Action: Unify your terminology. The following terms are used inconsistently across different sections:
+  - 'provisioning', 'machine', 'select', 'virtual', 'workloads'
 
 
 ======================================================
