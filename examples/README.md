@@ -32,3 +32,63 @@ This tool moves beyond simple linting by employing:
    ```
 
 4. **Observe the output.** The terminal will clearly show that while both documents might pass a basic linter, the `subtle_degradation_guide.md` receives a heavily penalized score due to its poor readability and lack of semantic consistency.
+
+## Expected Output
+
+When you run the demonstration script, you should see the following comparative output in your terminal:
+
+```
+======================================================
+ Running Document Quality Scorer - Subtlety Demo      
+======================================================
+
+Evaluating: cohesive_guide.md
+(Expected: High readability, high semantic consistency)
+------------------------------------------------------
+# Quality Report: cohesive_guide.md
+
+## Overall Score: 48.14/100
+
+### Structure
+- Headings: 4
+- Paragraphs: 3
+- Code Blocks: 0
+
+### Readability
+- Flesch-Kincaid Reading Ease: 61.64
+- Word Count: 116
+
+### Fidelity & Consistency
+- Semantic Consistency: 0.1805
+
+
+Evaluating: subtle_degradation_guide.md
+(Expected: Poor readability, high semantic drift)
+------------------------------------------------------
+# Quality Report: subtle_degradation_guide.md
+
+## Overall Score: 15.05/100
+
+### Structure
+- Headings: 4
+- Paragraphs: 3
+- Code Blocks: 0
+
+### Readability
+- Flesch-Kincaid Reading Ease: 29.77
+- Word Count: 134
+
+### Fidelity & Consistency
+- Semantic Consistency: 0.0539
+
+
+======================================================
+ Demonstration Summary                                
+======================================================
+Notice how the tool explicitly caught the subtle degradation:
+1. The Flesch-Kincaid metric heavily penalized the convoluted,
+   passive sentences in the second guide.
+2. The TF-IDF vectorization flagged the semantic drift
+   (switching between VM, instance, server, and node).
+======================================================
+```
