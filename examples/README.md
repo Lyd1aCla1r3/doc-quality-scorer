@@ -47,7 +47,7 @@ Evaluating: cohesive_guide.md
 ------------------------------------------------------
 # Quality Report: cohesive_guide.md
 
-## Overall Score: 48.14/100
+## Overall Score: 50.38/100
 
 ### Structure
 - Headings: 4
@@ -57,8 +57,8 @@ Evaluating: cohesive_guide.md
 **Analysis**: Document is properly partitioned with structural elements.
 
 ### Readability
-- Flesch-Kincaid Reading Ease: 61.64
-- Word Count: 116
+- Flesch-Kincaid Reading Ease: 64.43
+- Word Count: 106
 
 **Analysis**: Readability is within the optimal range (60-80) for technical documentation.
 
@@ -73,7 +73,7 @@ Evaluating: subtle_degradation_guide.md
 ------------------------------------------------------
 # Quality Report: subtle_degradation_guide.md
 
-## Overall Score: 15.05/100
+## Overall Score: 15.6/100
 
 ### Structure
 - Headings: 4
@@ -83,17 +83,17 @@ Evaluating: subtle_degradation_guide.md
 **Analysis**: Document is properly partitioned with structural elements.
 
 ### Readability
-- Flesch-Kincaid Reading Ease: 29.77
-- Word Count: 134
+- Flesch-Kincaid Reading Ease: 30.45
+- Word Count: 124
 
 **Analysis**: Score is penalized due to overly complex sentence structures.
 
 **Action:** Simplify the following flagged sentences:
 > "The virtual server typically necessitates approximately five minutes for complete initialization."
 
-> "Prerequisites Prior to the initiation of the creation process for an EC2 instance, the verification of appropriate administrative authorizations is fundamentally required."
+> "Prior to the initiation of the creation process for an EC2 instance, the verification of appropriate administrative authorizations is fundamentally required."
 
-> "Next Steps Following the successful startup phase of the allocated hardware, the monitoring of its operational integrity can be achieved via the administrative dashboard."
+> "Following the successful startup phase of the allocated hardware, the monitoring of its operational integrity can be achieved via the administrative dashboard."
 
 
 ### Fidelity & Consistency

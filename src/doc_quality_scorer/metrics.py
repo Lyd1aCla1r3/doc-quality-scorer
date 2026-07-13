@@ -32,11 +32,15 @@ def count_syllables(word):
 def calculate_readability(text: str) -> dict:
     """Calculates Flesch-Kincaid Reading Ease and standard counts."""
     ensure_nltk_resources()
-    sentences = sent_tokenize(text)
+    
+    # Strip markdown headers completely so they don't get lumped into sentences
+    clean_text = re.sub(r'^#+\s+.*$', '', text, flags=re.MULTILINE)
+    
+    sentences = sent_tokenize(clean_text)
     if not sentences:
         return {"flesch_kincaid": 0.0, "word_count": 0, "sentence_count": 0, "flagged_sentences": []}
 
-    words = [w for w in word_tokenize(text) if re.search(r'\w', w)]
+    words = [w for w in word_tokenize(clean_text) if re.search(r'\w', w)]
     word_count = len(words)
     sentence_count = len(sentences)
     syllable_count = sum(count_syllables(w) for w in words)
