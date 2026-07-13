@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doc-quality-scorer"
+version = "0.1.0"
+authors = [
+  { name="Lydia Pedersen", email="lydiaclaire.x@gmail.com" },
+]
+description = "A utility to calculate documentation quality metrics and fidelity scores."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "nltk",
+    "scikit-learn",
+    "markdown",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.scripts]
+doc-quality-scorer = "doc_quality_scorer.cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/Lyd1aCla1r3/doc-quality-scorer"
+"Bug Tracker" = "https://github.com/Lyd1aCla1r3/doc-quality-scorer/issues"
